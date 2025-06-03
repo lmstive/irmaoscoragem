@@ -1,95 +1,40 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+// app/page.js
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>app/page.js</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <main style={{ paddingTop: '20px', paddingBottom: '20px' }}> {/* Adiciona um pouco de espaçamento */}
+      {/* Esta é a sua nova seção "Início". 
+        Vamos precisar das suas ideias para o design e conteúdo aqui!
+        Ex: Uma imagem de fundo impactante? Um texto de boas-vindas mais elaborado? Botões?
+      */}
+      <section 
+        id="inicio" 
+        style={{ 
+          padding: '60px 20px', 
+          textAlign: 'center', 
+          minHeight: '70vh', // Para ocupar uma boa parte da tela
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+          borderBottom: '2px solid #333' // Linha separadora sutil
+        }}
+      >
+        <h1 style={{ fontSize: '2.8rem', color: '#B5B7B9', marginBottom: '20px' }}>
+          Bem-vindos ao Irmãos Coragem!
+        </h1>
+        <p style={{ fontSize: '1.2rem', color: '#bbbbbb', maxWidth: '700px', lineHeight: '1.8' }}>
+          Aqui a resenha e a amizade são eternas, e as histórias... 
+          bem, algumas melhor nem contar! 🍻 Décadas se passaram, mas a zoeira e o 
+          companheirismo continuam firmes.
+        </p>
+        {/* Poderíamos adicionar um botão aqui depois, ex: <button>Nossa História</button> */}
+      </section>
 
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      {/* Outras seções que você queira na página inicial podem vir aqui.
+          Por exemplo, um pequeno teaser da seção "Nossa História" ou "Integrantes".
+          Mas, por agora, vamos manter assim para ver a mudança. 
+      */}
+    </main>
   );
 }

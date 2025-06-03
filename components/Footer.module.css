@@ -1,0 +1,18 @@
+/* components/Footer.module.css */
+.footer {
+  padding: 40px 20px; /* Aumentei o padding */
+  background-color: #0d0d0d; /* Um preto um pouco mais suave ou o #000000 mesmo */
+  color: #aaaaaa;
+  text-align: center;
+  margin-top: 80px; /* Mais espaço antes do rodapé */
+  border-top: 1px solid #222222; /* Linha sutil no topo */
+}
+
+.footer p {
+  margin-bottom: 8px;
+}
+
+.credits {
+  font-size: 0.85rem;
+  color: #777777;
+}

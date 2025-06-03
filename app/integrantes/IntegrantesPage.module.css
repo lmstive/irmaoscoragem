@@ -1,0 +1,106 @@
+/* app/integrantes/IntegrantesPage.module.css */
+.pageContainer {
+  background-color: #000000; /* Fundo principal bem escuro */
+  color: #ecf0f1; /* Cor de texto padrão para a página (claro) */
+  min-height: 100vh;
+  padding-top: 80px; /* Ajuste se tiver um header fixo */
+  padding-bottom: 60px;
+}
+
+.integrantesSection {
+  padding: 40px 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.title {
+  font-size: 2.6rem; /* Levemente reduzido */
+  font-weight: 700;
+  color: #ffffff; /* Branco para o título principal */
+  text-align: center;
+  margin-bottom: 50px;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+.title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70px; /* Levemente reduzido */
+  height: 4px;
+  background-color: #f42f19; /* Vermelho/Laranja vibrante - mantém bom contraste */
+  border-radius: 2px;
+}
+
+.iconPlaceholder {
+  margin-right: 10px;
+  font-size: 2.3rem; /* Levemente reduzido */
+  vertical-align: middle;
+}
+
+.integrantesGrid {
+  display: grid;
+  /* Reduzindo o minmax para cards menores, permitindo mais colunas */
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Era minmax(280px, 1fr) */
+  gap: 25px; /* Gap levemente reduzido */
+}
+
+.loadingText,
+.noMembersText {
+  text-align: center;
+  font-size: 1.1rem; /* Levemente reduzido */
+  color: #bdc3c7; /* Cinza claro */
+  padding: 40px 0;
+}
+
+/* Media Queries para Responsividade */
+@media (max-width: 992px) {
+  .title {
+    font-size: 2.2rem;
+  }
+  .integrantesGrid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 1.9rem;
+    margin-bottom: 35px;
+  }
+  .iconPlaceholder {
+    font-size: 1.8rem;
+  }
+  .integrantesGrid {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); /* Pode ajustar para 2 colunas */
+    /* ou grid-template-columns: repeat(2, 1fr); */
+    gap: 20px;
+  }
+}
+
+@media (max-width: 576px) { /* Adicionando um breakpoint para telas menores */
+  .integrantesGrid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Pode ir para 1 ou 2 colunas */
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 15px;
+  }
+  .title {
+    font-size: 1.7rem;
+  }
+  .integrantesGrid {
+    grid-template-columns: 1fr; /* Uma coluna em telas muito pequenas */
+    gap: 20px;
+  }
+}

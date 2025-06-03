@@ -1,0 +1,77 @@
+/* components/Header.module.css */
+.header {
+  padding: 15px 0; /* Ajuste o padding vertical se necessário */
+  background-color: #1a1a1a;
+  color: #B5B7B9;
+  border-bottom: 3px solid #B5B7B9;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+}
+
+.container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Wrapper para o link das logos, para alinhar as imagens e ser clicável */
+.logoLinkWrapper {
+  display: flex;        /* Alinha as imagens filhas lado a lado */
+  align-items: center;  /* Centraliza verticalmente se tiverem alturas diferentes */
+  gap: 30px;            /* Aumente este valor para mais espaço, por exemplo, 30px */
+  text-decoration: none;/* Remove sublinhado do link */
+}
+
+.logoMascote {
+  /* O Next.js Image component lida com o tamanho via props width/height.
+     'object-fit' garante que a imagem se ajuste bem dentro dessas dimensões. */
+  object-fit: contain;
+}
+
+.logoNome {
+  object-fit: contain;
+}
+
+/* Estilos para a navegação */
+.nav {
+  /* Você pode adicionar estilos para o container da navegação se necessário */
+}
+
+.navLink {
+  color: #eeeeee;
+  margin: 0 12px;
+  text-decoration: none;
+  /* As fontes Poppins e Ruach LET são definidas em globals.css */
+  /* Se quiser forçar Poppins aqui: font-family: 'Poppins', sans-serif; */
+  font-weight: 500;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding-bottom: 5px;
+  position: relative;
+  transition: color 0.2s ease-in-out;
+}
+
+.navLink::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #B5B7B9;
+  transition: width 0.3s ease;
+}
+
+.navLink:hover {
+  color: #ffffff;
+}
+
+.navLink:hover::after {
+  width: 100%;
+}
