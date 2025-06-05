@@ -56,6 +56,7 @@ export const galerias = [
         '/galleries/kenji/foto2.jpeg',
         '/galleries/kenji/foto3.jpeg',
         '/galleries/kenji/foto4.jpeg',
+        '/galleries/kenji/foto5.jpeg',
     ],
   },
 ];

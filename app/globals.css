@@ -1,243 +1,780 @@
 /* app/globals.css */
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&family=Ruach+LET&display=swap');
 
+
 body {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  /* Define Poppins como a fonte padrão para o corpo do site */
-  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  background-color: #000000; /* Fundo Preto */
-  color: #eeeeee; /* Cor de texto principal clara */
-  line-height: 1.7;
+
+margin: 0;
+
+padding: 0;
+
+box-sizing: border-box;
+
+/* Define Poppins como a fonte padrão para o corpo do site */
+
+font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+
+Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+background-color: #000000; /* Fundo Preto */
+
+color: #eeeeee; /* Cor de texto principal clara */
+
+line-height: 1.7;
+
 }
+
 
 h1,
+
 h2,
+
 h3,
+
 h4,
+
 h5,
+
 h6 {
-  /* Define Ruach LET como a fonte padrão para os cabeçalhos */
-  font-family: 'Ruach LET', 'Times New Roman', Times, serif; /* Fallback genérico */
-  color: #B5B7B9; /* Cor principal para títulos */
-  margin-bottom: 1rem;
-  line-height: 1.3;
+
+/* Define Ruach LET como a fonte padrão para os cabeçalhos */
+
+font-family: 'Ruach LET', 'Times New Roman', Times, serif; /* Fallback genérico */
+
+color: #B5B7B9; /* Cor principal para títulos */
+
+margin-bottom: 1rem;
+
+line-height: 1.3;
+
 }
+
 
 a {
-  color: #B5B7B9;
-  text-decoration: none;
-  transition: color 0.3s ease;
+
+color: #B5B7B9;
+
+text-decoration: none;
+
+transition: color 0.3s ease;
+
 }
+
 
 a:hover {
-  color: #ffffff;
+
+color: #ffffff;
+
 }
+
 @tailwind base;
+
 @tailwind components;
+
 @tailwind utilities;
 
+
 @layer utilities {
-  @keyframes fadeIn {
-    from { opacity: 0; transform: scale(0.95); }
-    to { opacity: 1; transform: scale(1); }
-  }
-  .animate-fade-in {
-    animation: fadeIn 0.3s ease-in-out;
-  }
+
+@keyframes fadeIn {
+
+from { opacity: 0; transform: scale(0.95); }
+
+to { opacity: 1; transform: scale(1); }
+
 }
+
+.animate-fade-in {
+
+animation: fadeIn 0.3s ease-in-out;
+
+}
+
+}
+
 /* === ESTILOS DA GALERIA DE FOTOS === */
 
+
 /* Container da página da galeria individual */
+
 .gallery-page-container {
-  width: 90%;
-  max-width: 1200px;
-  margin: 2rem auto;
-  padding: 1rem;
+
+width: 90%;
+
+max-width: 1200px;
+
+margin: 2rem auto;
+
+padding: 1rem;
+
 }
+
 
 .gallery-header h1 {
-  font-size: 2.5rem;
-  font-weight: bold;
-  color: #333;
-  margin-bottom: 0.5rem;
+
+font-size: 2.5rem;
+
+font-weight: bold;
+
+color: #333;
+
+margin-bottom: 0.5rem;
+
 }
+
 
 .gallery-header p {
-  font-size: 1.1rem;
-  color: #666;
-  margin-bottom: 2rem;
+
+font-size: 1.1rem;
+
+color: #666;
+
+margin-bottom: 2rem;
+
 }
+
 
 /* Grid responsivo para as fotos */
+
 .gallery-grid {
-  display: grid;
-  /* Cria colunas de no mínimo 200px, preenchendo o espaço */
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 15px; /* Espaçamento entre as fotos */
+
+display: grid;
+
+/* Cria colunas de no mínimo 200px, preenchendo o espaço */
+
+grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+
+gap: 15px; /* Espaçamento entre as fotos */
+
 }
+
 
 /* Item individual da foto (miniatura) */
+
 .gallery-photo-item {
-  border-radius: 8px;
-  overflow: hidden; /* Garante que a imagem não saia das bordas arredondadas */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  aspect-ratio: 1 / 1; /* Força as fotos a serem quadradas */
+
+border-radius: 8px;
+
+overflow: hidden; /* Garante que a imagem não saia das bordas arredondadas */
+
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+cursor: pointer;
+
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+aspect-ratio: 1 / 1; /* Força as fotos a serem quadradas */
+
 }
+
 
 .gallery-photo-item:hover {
-  transform: scale(1.05); /* Efeito de zoom no hover */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+
+transform: scale(1.05); /* Efeito de zoom no hover */
+
+box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+
 }
 
+
 .gallery-photo-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Garante que a imagem cubra todo o espaço sem distorcer */
+
+width: 100%;
+
+height: 100%;
+
+object-fit: cover; /* Garante que a imagem cubra todo o espaço sem distorcer */
+
 }
+
 
 
 /* === ESTILOS DO VISUALIZADOR (LIGHTBOX) === */
 
+
 /* Fundo preto que cobre a tela toda */
+
 .lightbox-overlay {
-  position: fixed; /* Fica por cima de tudo */
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.9); /* Fundo preto com 90% de opacidade */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000; /* Z-index alto para garantir que fique na frente */
-  animation: fadeIn 0.3s ease; /* Animação de entrada */
+
+position: fixed; /* Fica por cima de tudo */
+
+top: 0;
+
+left: 0;
+
+width: 100%;
+
+height: 100%;
+
+background-color: rgba(0, 0, 0, 0.9); /* Fundo preto com 90% de opacidade */
+
+display: flex;
+
+align-items: center;
+
+justify-content: center;
+
+z-index: 1000; /* Z-index alto para garantir que fique na frente */
+
+animation: fadeIn 0.3s ease; /* Animação de entrada */
+
 }
+
 
 /* Imagem principal no visualizador */
+
 .lightbox-image {
-  max-width: 90%;
-  max-height: 85%;
-  object-fit: contain;
-  border-radius: 4px;
+
+max-width: 90%;
+
+max-height: 85%;
+
+object-fit: contain;
+
+border-radius: 4px;
+
 }
+
 
 /* Botão de Fechar (X) */
+
 .lightbox-close {
-  position: absolute;
-  top: 15px;
-  right: 25px;
-  font-size: 3rem;
-  color: #fff;
-  background: none;
-  border: none;
-  cursor: pointer;
-  line-height: 1;
+
+position: absolute;
+
+top: 15px;
+
+right: 25px;
+
+font-size: 3rem;
+
+color: #fff;
+
+background: none;
+
+border: none;
+
+cursor: pointer;
+
+line-height: 1;
+
 }
+
 
 /* Botões de Navegação (Anterior e Próximo) */
+
 .lightbox-nav {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 2.5rem;
-  color: white;
-  background-color: rgba(0, 0, 0, 0.3);
-  border: none;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
+
+position: absolute;
+
+top: 50%;
+
+transform: translateY(-50%);
+
+font-size: 2.5rem;
+
+color: white;
+
+background-color: rgba(0, 0, 0, 0.3);
+
+border: none;
+
+border-radius: 50%;
+
+width: 50px;
+
+height: 50px;
+
+display: flex;
+
+align-items: center;
+
+justify-content: center;
+
+cursor: pointer;
+
+transition: background-color 0.2s ease;
+
 }
+
 
 .lightbox-nav:hover {
-  background-color: rgba(0, 0, 0, 0.6);
+
+background-color: rgba(0, 0, 0, 0.6);
+
 }
+
 
 .lightbox-prev {
-  left: 15px;
+
+left: 15px;
+
 }
+
 
 .lightbox-next {
-  right: 15px;
+
+right: 15px;
+
 }
+
 
 /* Animação de Fade-in */
+
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+
+from { opacity: 0; }
+
+to { opacity: 1; }
+
 }
+
 /* === ESTILOS DA PÁGINA DE LISTAGEM DE ÁLBUNS === */
 
+
 /* Grid para os cards dos álbuns */
+
 .album-grid {
-  display: grid;
-  /* Cria colunas responsivas de no mínimo 300px */
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 25px; /* Espaçamento entre os álbuns */
+
+display: grid;
+
+/* Cria colunas responsivas de no mínimo 300px */
+
+grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+
+gap: 25px; /* Espaçamento entre os álbuns */
+
 }
+
 
 /* Card de um álbum individual */
+
 .album-card {
-  display: block; /* Para que o link ocupe todo o espaço */
-  position: relative; /* Necessário para o posicionamento do texto por cima */
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  height: 250px; /* Altura fixa para todos os cards */
+
+display: block; /* Para que o link ocupe todo o espaço */
+
+position: relative; /* Necessário para o posicionamento do texto por cima */
+
+border-radius: 8px;
+
+overflow: hidden;
+
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+height: 250px; /* Altura fixa para todos os cards */
+
 }
+
 
 .album-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+
+transform: translateY(-5px);
+
+box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+
 }
+
 
 /* Imagem de capa do álbum */
+
 .album-card-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.4s ease;
+
+width: 100%;
+
+height: 100%;
+
+object-fit: cover;
+
+transition: transform 0.4s ease;
+
 }
+
 
 .album-card:hover .album-card-image {
-  transform: scale(1.1); /* Efeito de zoom na imagem ao passar o mouse */
+
+transform: scale(1.1); /* Efeito de zoom na imagem ao passar o mouse */
+
 }
+
 
 /* Sobreposição escura para legibilidade do texto */
+
 .album-card-overlay {
-  position: absolute;
-  inset: 0; /* Cobre todo o card */
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 60%);
+
+position: absolute;
+
+inset: 0; /* Cobre todo o card */
+
+background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 60%);
+
 }
+
 
 /* Conteúdo de texto do card (título e data) */
+
 .album-card-content {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 20px;
-  color: white;
+
+position: absolute;
+
+bottom: 0;
+
+left: 0;
+
+right: 0;
+
+padding: 20px;
+
+color: white;
+
 }
+
 
 .album-card-content h2 {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin: 0 0 5px 0;
+
+font-size: 1.5rem;
+
+font-weight: bold;
+
+margin: 0 0 5px 0;
+
 }
 
+
 .album-card-content p {
-  font-size: 0.9rem;
-  opacity: 0.9;
-  margin: 0;
+
+font-size: 0.9rem;
+
+opacity: 0.9;
+
+margin: 0;
+
+}
+
+
+/* === ESTILOS DA PÁGINA PRINCIPAL === */
+
+
+/* --- Seção de Boas-Vindas (Hero) --- */
+
+.home-hero {
+
+padding: 80px 20px;
+
+text-align: center;
+
+min-height: 70vh;
+
+display: flex;
+
+flex-direction: column;
+
+justify-content: center;
+
+align-items: center;
+
+background-color: #282c34; /* Fundo escuro para destaque */
+
+color: #ffffff;
+
+border-bottom: 1px solid #444;
+
+}
+
+
+.home-hero__title {
+
+font-size: 3rem;
+
+margin-bottom: 20px;
+
+font-weight: bold;
+
+}
+
+
+.home-hero__subtitle {
+
+font-size: 1.2rem;
+
+max-width: 700px;
+
+line-height: 1.7;
+
+color: rgba(255, 255, 255, 0.85);
+
+}
+
+
+/* --- Estilo Padrão das Seções --- */
+
+.home-section {
+
+padding: 60px 20px;
+
+text-align: center;
+
+border-bottom: 1px solid #eee;
+
+}
+
+
+.home-section--light {
+
+background-color: #f9f9f9;
+
+}
+
+
+.home-section__title {
+
+font-size: 2.5rem;
+
+margin-bottom: 15px;
+
+color: #333;
+
+}
+
+
+.home-section__description {
+
+font-size: 1.1rem;
+
+color: #666;
+
+max-width: 600px;
+
+margin: 0 auto 30px auto;
+
+}
+
+
+/* --- Seção de Eventos --- */
+
+.events-container {
+
+display: flex;
+
+flex-direction: column;
+
+gap: 20px;
+
+max-width: 800px;
+
+margin: 0 auto;
+
+}
+
+
+.event-card {
+
+display: flex;
+
+align-items: center;
+
+background-color: #fff;
+
+padding: 20px;
+
+border-radius: 8px;
+
+box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+
+text-align: left;
+
+transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+}
+
+
+.event-card:hover {
+
+transform: translateY(-5px);
+
+box-shadow: 0 6px 15px rgba(0,0,0,0.12);
+
+}
+
+
+.event-card__date {
+
+display: flex;
+
+flex-direction: column;
+
+align-items: center;
+
+background-color: #333;
+
+color: #fff;
+
+border-radius: 8px;
+
+padding: 10px 15px;
+
+margin-right: 20px;
+
+font-weight: bold;
+
+}
+
+
+.event-card__day {
+
+font-size: 1.8rem;
+
+line-height: 1;
+
+}
+
+
+.event-card__month {
+
+font-size: 0.9rem;
+
+text-transform: uppercase;
+
+}
+
+
+.event-card__info h3 {
+
+font-size: 1.4rem;
+
+font-weight: bold;
+
+color: #333;
+
+margin: 0 0 5px 0;
+
+}
+
+
+.event-card__info p {
+
+font-size: 1rem;
+
+color: #555;
+
+margin: 0;
+
+}
+
+
+/* --- Botão Reutilizável --- */
+
+.btn-primary {
+
+display: inline-block;
+
+padding: 12px 30px;
+
+background-color: #333;
+
+color: #fff;
+
+text-decoration: none;
+
+border-radius: 5px;
+
+font-size: 1rem;
+
+font-weight: bold;
+
+transition: background-color 0.3s ease, transform 0.2s ease;
+
+}
+
+
+.btn-primary:hover {
+
+background-color: #555;
+
+transform: translateY(-2px);
+
+} 
+
+/* ========================================================= */
+/* === ESTILOS PARA SEÇÃO DE CARDS DA PÁGINA PRINCIPAL   === */
+/* ========================================================= */
+
+.cards-section-container {
+  padding: 5rem 1.25rem; /* 80px 20px */
+}
+
+@media (min-width: 768px) {
+  .cards-section-container {
+    padding-left: 2.5rem; /* 40px */
+    padding-right: 2.5rem; /* 40px */
+  }
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* 1 coluna em telas pequenas */
+  gap: 2rem; /* 32px */
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Em telas grandes, o grid passa a ter 3 colunas */
+@media (min-width: 1024px) {
+  .cards-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Estilo individual de cada card */
+.info-card {
+  display: block; /* Garante que o link ocupe todo o espaço */
+  height: 100%;
+  padding: 2rem; /* 32px */
+  border-radius: 1rem; /* 16px */
+  border: 1px solid rgb(55 65 81); /* border-gray-700 */
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  /* Usando a classe de efeito de vidro que já tínhamos */
+}
+
+.info-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1); /* Efeito de brilho/sombra */
+}
+
+/* Cores da borda no hover */
+.info-card.card-evento:hover {
+  border-color: #38bdf8; /* ciano */
+}
+.info-card.card-turma:hover {
+  border-color: #34d399; /* verde */
+}
+.info-card.card-memorias:hover {
+  border-color: #f59e0b; /* ambar */
+}
+
+.info-card__icon {
+  font-size: 3rem; /* 48px */
+  margin-bottom: 1.5rem; /* 24px */
+}
+
+.info-card__title {
+  font-family: 'Ruach LET', serif;
+  font-size: 1.5rem; /* 24px */
+  color: #FFFFFF;
+  margin-bottom: 0.75rem; /* 12px */
+}
+
+.info-card__text {
+  font-family: 'Poppins', sans-serif;
+  color: #D1D5DB; /* gray-300 */
+}
+
+.info-card__highlight {
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+  font-size: 1.125rem; /* 18px */
+  color: #67e8f9; /* cyan-300 */
 }
