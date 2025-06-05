@@ -35,3 +35,209 @@ a {
 a:hover {
   color: #ffffff;
 }
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  @keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+}
+/* === ESTILOS DA GALERIA DE FOTOS === */
+
+/* Container da página da galeria individual */
+.gallery-page-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+.gallery-header h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.gallery-header p {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+/* Grid responsivo para as fotos */
+.gallery-grid {
+  display: grid;
+  /* Cria colunas de no mínimo 200px, preenchendo o espaço */
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 15px; /* Espaçamento entre as fotos */
+}
+
+/* Item individual da foto (miniatura) */
+.gallery-photo-item {
+  border-radius: 8px;
+  overflow: hidden; /* Garante que a imagem não saia das bordas arredondadas */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  aspect-ratio: 1 / 1; /* Força as fotos a serem quadradas */
+}
+
+.gallery-photo-item:hover {
+  transform: scale(1.05); /* Efeito de zoom no hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.gallery-photo-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Garante que a imagem cubra todo o espaço sem distorcer */
+}
+
+
+/* === ESTILOS DO VISUALIZADOR (LIGHTBOX) === */
+
+/* Fundo preto que cobre a tela toda */
+.lightbox-overlay {
+  position: fixed; /* Fica por cima de tudo */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9); /* Fundo preto com 90% de opacidade */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000; /* Z-index alto para garantir que fique na frente */
+  animation: fadeIn 0.3s ease; /* Animação de entrada */
+}
+
+/* Imagem principal no visualizador */
+.lightbox-image {
+  max-width: 90%;
+  max-height: 85%;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+/* Botão de Fechar (X) */
+.lightbox-close {
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  font-size: 3rem;
+  color: #fff;
+  background: none;
+  border: none;
+  cursor: pointer;
+  line-height: 1;
+}
+
+/* Botões de Navegação (Anterior e Próximo) */
+.lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2.5rem;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.3);
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.lightbox-nav:hover {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.lightbox-prev {
+  left: 15px;
+}
+
+.lightbox-next {
+  right: 15px;
+}
+
+/* Animação de Fade-in */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+/* === ESTILOS DA PÁGINA DE LISTAGEM DE ÁLBUNS === */
+
+/* Grid para os cards dos álbuns */
+.album-grid {
+  display: grid;
+  /* Cria colunas responsivas de no mínimo 300px */
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 25px; /* Espaçamento entre os álbuns */
+}
+
+/* Card de um álbum individual */
+.album-card {
+  display: block; /* Para que o link ocupe todo o espaço */
+  position: relative; /* Necessário para o posicionamento do texto por cima */
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 250px; /* Altura fixa para todos os cards */
+}
+
+.album-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Imagem de capa do álbum */
+.album-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.album-card:hover .album-card-image {
+  transform: scale(1.1); /* Efeito de zoom na imagem ao passar o mouse */
+}
+
+/* Sobreposição escura para legibilidade do texto */
+.album-card-overlay {
+  position: absolute;
+  inset: 0; /* Cobre todo o card */
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 60%);
+}
+
+/* Conteúdo de texto do card (título e data) */
+.album-card-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px;
+  color: white;
+}
+
+.album-card-content h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0 0 5px 0;
+}
+
+.album-card-content p {
+  font-size: 0.9rem;
+  opacity: 0.9;
+  margin: 0;
+}

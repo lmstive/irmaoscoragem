@@ -41,11 +41,11 @@ const members = [
     titleOrQuote: "Cabelo",
     imageUrl: "/images/integrantes/cabelo.jpg", // Caminho correto para a imagem
   },
-  {
+   {
     id: 7,
-    name: "Kenji",
-    titleOrQuote: "Neuso",
-    imageUrl: "/images/integrantes/Matoso.jpg",
+    name: "Fábio",  
+    titleOrQuote: "Bart",
+    imageUrl: "/images/integrantes/bart.jpg", // Caminho correto para a imagem
   },
   {
     id: 8,
@@ -67,9 +67,9 @@ const members = [
   },
   {
     id: 11,
-    name: "Fábio",  
-    titleOrQuote: "Bart",
-    imageUrl: "/images/integrantes/bart.jpg", // Caminho correto para a imagem
+    name: "Kenji",
+    titleOrQuote: "Neuso",
+    imageUrl: "/images/integrantes/Matoso.jpg",
   },
   {
     id: 12,

@@ -6,7 +6,7 @@ export default function Footer() {
     <footer className={styles.footer}>
       <p>© {new Date().getFullYear()} Irmãos Coragem. A amizade é a nossa maior aventura!</p>
       <p className={styles.credits}>
-        Site orgulhosamente construído com Next.js.
+        Cascavel - PR.
       </p>
     </footer>
   );
