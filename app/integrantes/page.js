@@ -62,7 +62,7 @@ const members = [
   {
     id: 10,
     name: "André",
-    titleOrQuote: "André",
+    titleOrQuote: "Sidnelson",
     imageUrl: "/images/integrantes/andre.jpg", // Caminho correto para a imagem
   },
   {
@@ -88,6 +88,12 @@ const members = [
     name: "Juninho",
     titleOrQuote: "Marrom",
     imageUrl: "/images/integrantes/juninho.jpg", // Caminho correto para a imagem
+  },
+  {
+    id: 15,
+    name: "João",
+    titleOrQuote: "Jão",
+    imageUrl: "/images/integrantes/joao.jpg", // Caminho correto para a imagem
   },
 
   // Adicione mais integrantes conforme necessário:
