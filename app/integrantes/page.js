@@ -95,7 +95,12 @@ const members = [
     titleOrQuote: "Jão",
     imageUrl: "/images/integrantes/joao.jpg", // Caminho correto para a imagem
   },
-
+  {
+    id: 16,
+    name: "Rafael",
+    titleOrQuote: "Rafael",
+    imageUrl: "/images/integrantes/rafael.jpg", // Caminho correto para a imagem}
+  },
   // Adicione mais integrantes conforme necessário:
   // {
   //   id: 5,
