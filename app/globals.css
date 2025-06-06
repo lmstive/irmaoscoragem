@@ -698,83 +698,71 @@ transform: translateY(-2px);
 } 
 
 /* ========================================================= */
-/* === ESTILOS PARA SEÇÃO DE CARDS DA PÁGINA PRINCIPAL   === */
+/* === ESTILOS E CORREÇÕES PARA A PÁGINA PRINCIPAL       === */
 /* ========================================================= */
 
-.cards-section-container {
-  padding: 5rem 1.25rem; /* 80px 20px */
+/* --- Seção HERO Corrigida --- */
+.home-hero-container {
+  position: relative;
+  min-height: 70vh;
+  padding: 4rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centraliza horizontalmente */
+  justify-content: center; /* Centraliza verticalmente */
+  text-align: center; /* Garante o alinhamento do texto */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+.hero-overlay::before {
+  content: ''; position: absolute; inset: 0; background-color: rgba(0, 0, 0, 0.6); z-index: 1;
+}
+.hero-content {
+  position: relative; z-index: 2;
+}
+.hero-title {
+  font-size: 3.5rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+.hero-subtitle {
+  font-size: 1.25rem; max-width: 600px; margin: 1rem auto 0 auto; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
 }
 
-@media (min-width: 768px) {
-  .cards-section-container {
-    padding-left: 2.5rem; /* 40px */
-    padding-right: 2.5rem; /* 40px */
-  }
-}
+/* --- Seção de CARDS LADO A LADO --- */
+.cards-section-container { padding: 5rem 1.25rem; }
+.cards-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; max-width: 1280px; margin: 0 auto; }
+@media (min-width: 1024px) { .cards-grid { grid-template-columns: repeat(3, 1fr); } }
+.info-card { display: block; height: 100%; padding: 2rem; border-radius: 1rem; border: 1px solid rgb(55 65 81); transition: all 0.3s ease; }
+.info-card:hover { transform: scale(1.05); box-shadow: 0 0 25px rgba(255, 255, 255, 0.1); }
+.info-card.card-evento:hover { border-color: #38bdf8; }
+.info-card.card-turma:hover { border-color: #34d399; }
+.info-card.card-memorias:hover { border-color: #f59e0b; }
+.info-card__icon { font-size: 3rem; margin-bottom: 1.5rem; }
+.info-card__title { font-size: 1.5rem; color: #FFFFFF; margin-bottom: 0.75rem; }
+.info-card__text { color: #D1D5DB; }
+.info-card__highlight { font-weight: bold; font-size: 1.125rem; color: #67e8f9; }
 
-.cards-grid {
-  display: grid;
-  grid-template-columns: 1fr; /* 1 coluna em telas pequenas */
-  gap: 2rem; /* 32px */
-  max-width: 1280px;
-  margin-left: auto;
-  margin-right: auto;
-}
+/* Efeito de Vidro */
+.glass-effect { background: rgba(30, 30, 30, 0.4); backdrop-filter: blur(10px); }
 
-/* Em telas grandes, o grid passa a ter 3 colunas */
-@media (min-width: 1024px) {
-  .cards-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
+/* --- Card da Contagem Regressiva --- */
+.countdown-section { padding: 5rem 1.25rem; background-color: #111; }
+.countdown-card { max-width: 800px; margin: 0 auto; padding: 2.5rem; text-align: center; border-radius: 1rem; }
+.countdown-card__title { font-size: 2.5rem; margin-bottom: 0.5rem; }
+.countdown-card__subtitle { font-size: 1.25rem; color: #B5B7B9; margin-bottom: 2rem; }
+.countdown-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
+.countdown-block { background-color: rgba(0, 0, 0, 0.2); border: 1px solid rgba(255, 255, 255, 0.1); padding: 1rem 1.5rem; border-radius: 0.5rem; min-width: 100px; }
+.countdown-number { font-size: 3rem; font-weight: 700; line-height: 1; color: #FFFFFF; }
+.countdown-label { font-size: 0.875rem; text-transform: uppercase; color: #B5B7B9; margin-top: 0.5rem; }
 
-/* Estilo individual de cada card */
-.info-card {
-  display: block; /* Garante que o link ocupe todo o espaço */
-  height: 100%;
-  padding: 2rem; /* 32px */
-  border-radius: 1rem; /* 16px */
-  border: 1px solid rgb(55 65 81); /* border-gray-700 */
-  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-  /* Usando a classe de efeito de vidro que já tínhamos */
-}
-
-.info-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1); /* Efeito de brilho/sombra */
-}
-
-/* Cores da borda no hover */
-.info-card.card-evento:hover {
-  border-color: #38bdf8; /* ciano */
-}
-.info-card.card-turma:hover {
-  border-color: #34d399; /* verde */
-}
-.info-card.card-memorias:hover {
-  border-color: #f59e0b; /* ambar */
-}
-
-.info-card__icon {
-  font-size: 3rem; /* 48px */
-  margin-bottom: 1.5rem; /* 24px */
-}
-
-.info-card__title {
-  font-family: 'Ruach LET', serif;
-  font-size: 1.5rem; /* 24px */
-  color: #FFFFFF;
-  margin-bottom: 0.75rem; /* 12px */
-}
-
-.info-card__text {
-  font-family: 'Poppins', sans-serif;
-  color: #D1D5DB; /* gray-300 */
-}
-
-.info-card__highlight {
-  font-family: 'Poppins', sans-serif;
-  font-weight: bold;
-  font-size: 1.125rem; /* 18px */
-  color: #67e8f9; /* cyan-300 */
-}
+/* --- Card da Seção de Aniversariantes --- */
+.birthday-section-wrapper { padding: 5rem 1.25rem; }
+.birthday-section-card { max-width: 1100px; margin: 0 auto; padding: 2.5rem; border-radius: 1rem; }
+.birthday-section-card__title { text-align: center; font-size: 2.5rem; margin-bottom: 0.5rem; }
+.birthday-section-card__subtitle { text-align: center; color: #B5B7B9; margin-bottom: 3rem; font-size: 1.25rem; }
+.birthday-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; }
+.birthday-card { background-color: #222; border: 1px solid #444; border-radius: 0.75rem; padding: 1.5rem; text-align: center; transition: all 0.3s ease; }
+.birthday-card:hover { transform: translateY(-10px); box-shadow: 0 10px 20px rgba(255, 215, 0, 0.1); border-color: #fcd34d; }
+.birthday-card__image { width: 120px; height: 120px; border-radius: 50%; border: 4px solid #B5B7B9; margin: 0 auto 1rem auto; object-fit: cover; }
+.birthday-card__name { font-weight: 700; font-size: 1.25rem; color: #FFFFFF; }
+.birthday-card__date { color: #fcd34d; font-weight: 500; }
