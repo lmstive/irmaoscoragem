@@ -5,7 +5,7 @@ export const integrantes = [
 
   {
     nome: 'Luis Miguel "spice"',
-    fotoUrl: '/integrantes/luis.jpg', // <-- Caminho para a foto na pasta /public
+    fotoUrl: '/images/integrantes/luis.jpg', // <-- Caminho para a foto na pasta /public
     aniversario: '1986-11-19', // Aniversário em Junho
   },
   {
@@ -14,13 +14,8 @@ export const integrantes = [
     aniversario: '1978-06-16', // Aniversário em Junho
   },
   {
-    nome: 'Beltrano Souza',
-    fotoUrl: '/integrantes/beltrano.jpg',
-    aniversario: '1988-07-05', // Aniversário em Julho (não aparecerá agora)
-  },
-  {
-    nome: 'Willian "A Lenda"',
-    fotoUrl: '/integrantes/willian.jpg',
-    aniversario: '1980-03-20', // Aniversário em Março (não aparecerá agora)
+    nome: 'Ever "Ervis"',
+    fotoUrl: '/images/integrantes/ever.jpg',
+    aniversario: '1979-09-26', // Aniversário em Julho (não aparecerá agora)
   },
 ];

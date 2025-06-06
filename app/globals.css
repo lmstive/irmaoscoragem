@@ -711,9 +711,10 @@ transform: translateY(-2px);
   align-items: center; /* Centraliza horizontalmente */
   justify-content: center; /* Centraliza verticalmente */
   text-align: center; /* Garante o alinhamento do texto */
-  background-size: cover;
+  background-size: contain; /* Alterado de 'cover' para 'contain' */
   background-position: center;
   background-attachment: fixed;
+  background-repeat: no-repeat; /* Adicionado para evitar repetição se a imagem for menor que o container */
 }
 .hero-overlay::before {
   content: ''; position: absolute; inset: 0; background-color: rgba(0, 0, 0, 0.6); z-index: 1;

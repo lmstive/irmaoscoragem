@@ -9,12 +9,19 @@ import { integrantes } from '@/data/integrantes.js';
 // --- COMPONENTES DAS SEÇÕES ---
 
 const HeroSection = () => (
-  <section className="home-hero-container hero-overlay" style={{ backgroundImage: "url('/hero-background.jpg')" }}>
+  <section className="home-hero-container hero-overlay" style={{ backgroundImage: "url('/images/img/Ic.png')" }}>
     <div className="hero-content">
       <h1 className="hero-title">Irmãos Coragem</h1>
       <p className="hero-subtitle">
         Décadas de história, amizade e resenhas que não acabam mais.
         Seja bem-vindo ao Irmaãos Coragem.
+        <br />
+        <span className="hero-highlight">Desde 2000.</span>
+
+        <br />
+        <br />
+        <span className="hero-highlight">Se voce tem fotos nos envie para adicionar a galeria de fotos!</span>
+
       </p>
     </div>
   </section>
@@ -43,12 +50,12 @@ const CardsSection = () => {
           <Link href="/integrantes" className="info-card glass-effect card-turma">
             <div className="info-card__icon">🍻</div>
             <h3 className="info-card__title">A Turma</h3>
-            <p className="info-card__text">A base de tudo. Cada figura com sua história, juntos formamos o elenco principal.</p>
+            <p className="info-card__text">A base de tudo. Cada figura com sua história, juntos formamos os Irmãos Coragem.</p>
           </Link>
           <Link href="/galeria" className="info-card glass-effect card-memorias">
             <div className="info-card__icon">📸</div>
             <h3 className="info-card__title">Nossas Memórias</h3>
-            <p className="info-card__text">Dos churrascos épicos às viagens inesquecíveis, cada foto é uma relíquia.</p>
+            <p className="info-card__text">Dos churrascos às viagens inesquecíveis, cada foto é uma relíquia.</p>
           </Link>
         </div>
       </section>
