@@ -1,77 +1,72 @@
-/* components/Header.module.css */
+/* Container principal do header */
 .header {
-  padding: 15px 0; /* Ajuste o padding vertical se necessário */
-  background-color: #1a1a1a;
-  color: #B5B7B9;
-  border-bottom: 3px solid #B5B7B9;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
   width: 100%;
+  background-color: #1a1a1a; /* Um fundo escuro, mas diferente do preto total */
+  border-bottom: 1px solid #333;
+  padding: 1rem 2rem;
+  position: sticky; /* Opcional: faz o menu ficar fixo no topo ao rolar */
+  top: 0;
+  z-index: 50;
 }
 
+/* Container que centraliza o conteúdo e alinha os itens */
 .container {
-  max-width: 1140px;
+  max-width: 1280px;
   margin: 0 auto;
-  padding: 0 20px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* ESSENCIAL: joga a logo pra esquerda e a nav pra direita */
   align-items: center;
 }
 
-/* Wrapper para o link das logos, para alinhar as imagens e ser clicável */
-.logoLinkWrapper {
-  display: flex;        /* Alinha as imagens filhas lado a lado */
-  align-items: center;  /* Centraliza verticalmente se tiverem alturas diferentes */
-  gap: 30px;            /* Aumente este valor para mais espaço, por exemplo, 30px */
-  text-decoration: none;/* Remove sublinhado do link */
-}
-
-.logoMascote {
-  /* O Next.js Image component lida com o tamanho via props width/height.
-     'object-fit' garante que a imagem se ajuste bem dentro dessas dimensões. */
-  object-fit: contain;
-}
-
-.logoNome {
-  object-fit: contain;
-}
-
-/* Estilos para a navegação */
-.nav {
-  /* Você pode adicionar estilos para o container da navegação se necessário */
-}
-
-.navLink {
-  color: #eeeeee;
-  margin: 0 12px;
+/* Estilo para a logo */
+.logo {
+  font-family: 'Ruach LET', serif;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #B5B7B9;
   text-decoration: none;
-  /* As fontes Poppins e Ruach LET são definidas em globals.css */
-  /* Se quiser forçar Poppins aqui: font-family: 'Poppins', sans-serif; */
-  font-weight: 500;
-  font-size: 0.95rem;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  padding-bottom: 5px;
-  position: relative;
-  transition: color 0.2s ease-in-out;
+}
+.logo:hover {
+  color: #fff;
 }
 
-.navLink::after {
+/* Container da navegação (links + botões de login) */
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 2rem; /* Espaço entre a lista de links e os botões de login */
+}
+
+/* Lista de links do menu */
+.nav ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 1.5rem; /* Espaço entre cada item do menu */
+}
+
+.nav a {
+  text-decoration: none;
+  color: #B5B7B9;
+  font-weight: 500;
+  position: relative;
+  padding-bottom: 5px;
+}
+
+/* Efeito de linha embaixo do link ao passar o mouse */
+.nav a::after {
   content: '';
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 0;
-  height: 2px;
-  background-color: #B5B7B9;
-  transition: width 0.3s ease;
-}
-
-.navLink:hover {
-  color: #ffffff;
-}
-
-.navLink:hover::after {
   width: 100%;
+  height: 2px;
+  background-color: #fff;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.nav a:hover::after {
+  transform: scaleX(1);
 }

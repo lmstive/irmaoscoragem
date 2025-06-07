@@ -1,31 +1,33 @@
 'use client'; 
 
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { db } from '@/lib/firebaseConfig.js'; 
 import { collection, query, orderBy, onSnapshot, addDoc, serverTimestamp } from 'firebase/firestore';
+import { UserAuth } from '@/context/AuthContext'; // <<< Importamos o hook de autenticação
 
-// --- COMPONENTE DO FORMULÁRIO DE NOVA RESENHA (sem alterações) ---
-const NewPostForm = () => {
-  const [autor, setAutor] = useState('');
+// --- COMPONENTE DO FORMULÁRIO DE NOVA RESENHA ---
+const NewPostForm = ({ user }) => {
+  // O campo 'autor' foi removido, pois usaremos o usuário logado
   const [titulo, setTitulo] = useState('');
   const [texto, setTexto] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handlePublicar = async (e) => {
     e.preventDefault();
-    if (!texto.trim() || !autor.trim()) {
-      alert('Por favor, preencha seu nome e a mensagem.');
+    if (!texto.trim()) {
+      alert('Por favor, escreva sua mensagem.');
       return;
     }
     setIsSubmitting(true);
     try {
       await addDoc(collection(db, 'resenhas'), {
-        autor: autor,
+        autor: user.displayName || user.email, // <<< USA O NOME DO USUÁRIO LOGADO
+        userId: user.uid, // Salva o ID do usuário para referência futura
         titulo: titulo,
         texto: texto,
         createdAt: serverTimestamp(),
       });
-      setAutor('');
       setTitulo('');
       setTexto('');
     } catch (error) {
@@ -39,9 +41,7 @@ const NewPostForm = () => {
   return (
     <form className="new-post-form" onSubmit={handlePublicar}>
       <h2 className="text-2xl font-ruach mb-6">Puxar um Assunto Novo</h2>
-      <div className="form-group">
-        <input type="text" className="form-input" placeholder="Seu nome ou apelido" value={autor} onChange={(e) => setAutor(e.target.value)} required />
-      </div>
+      {/* O campo de nome foi REMOVIDO */}
       <div className="form-group">
         <input type="text" className="form-input" placeholder="Título da Resenha (opcional)" value={titulo} onChange={(e) => setTitulo(e.target.value)} />
       </div>
@@ -54,31 +54,25 @@ const NewPostForm = () => {
 };
 
 // --- COMPONENTE DO FORMULÁRIO DE NOVO COMENTÁRIO ---
-const NewCommentForm = ({ resenhaId }) => {
-  const [autor, setAutor] = useState('');
+const NewCommentForm = ({ resenhaId, user }) => {
   const [texto, setTexto] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleCommentSubmit = async (e) => {
     e.preventDefault();
-    if (!texto.trim() || !autor.trim()) {
-      alert('Por favor, preencha seu nome e o comentário.');
-      return;
-    }
+    if (!texto.trim()) return;
     setIsSubmitting(true);
     try {
-      // Cria o caminho para a sub-coleção de comentários DENTRO da resenha específica
       const commentsCollectionRef = collection(db, 'resenhas', resenhaId, 'comentarios');
       await addDoc(commentsCollectionRef, {
-        autor: autor,
+        autor: user.displayName || user.email, // <<< USA O NOME DO USUÁRIO LOGADO
+        userId: user.uid,
         texto: texto,
         createdAt: serverTimestamp(),
       });
-      setAutor('');
       setTexto('');
     } catch (error) {
       console.error("Erro ao adicionar comentário: ", error);
-      alert("Ocorreu um erro ao comentar.");
     } finally {
       setIsSubmitting(false);
     }
@@ -86,7 +80,6 @@ const NewCommentForm = ({ resenhaId }) => {
 
   return (
     <form className="form-group mt-6" onSubmit={handleCommentSubmit}>
-      <input type="text" className="form-input mb-2" placeholder="Seu nome" value={autor} onChange={(e) => setAutor(e.target.value)} required/>
       <textarea className="form-textarea" placeholder="Escreva seu comentário..." rows="2" value={texto} onChange={(e) => setTexto(e.target.value)} required></textarea>
       <button type="submit" className="form-button mt-2" disabled={isSubmitting}>
         {isSubmitting ? 'Enviando...' : 'Comentar'}
@@ -95,32 +88,24 @@ const NewCommentForm = ({ resenhaId }) => {
   );
 };
 
-
-// --- COMPONENTE DO CARD DE RESENHA (COM LÓGICA DE COMENTÁRIOS) ---
-const ResenhaCard = ({ resenha }) => {
+// --- COMPONENTE DO CARD DE RESENHA ---
+const ResenhaCard = ({ resenha, user }) => {
   const [comentariosVisiveis, setComentariosVisiveis] = useState(false);
   const [comentarios, setComentarios] = useState([]);
 
-  // Busca os comentários em tempo real quando o usuário clica para vê-los
   useEffect(() => {
     if (comentariosVisiveis) {
-      const commentsQuery = query(
-        collection(db, 'resenhas', resenha.id, 'comentarios'),
-        orderBy('createdAt', 'asc') // Comentários do mais antigo para o mais novo
-      );
-
-      const unsubscribe = onSnapshot(commentsQuery, (snapshot) => {
-        const commentsData = snapshot.docs.map(doc => ({ ...doc.data(), id: doc.id }));
-        setComentarios(commentsData);
+      const q = query(collection(db, 'resenhas', resenha.id, 'comentarios'), orderBy('createdAt', 'asc'));
+      const unsubscribe = onSnapshot(q, (snapshot) => {
+        setComentarios(snapshot.docs.map(doc => ({ ...doc.data(), id: doc.id })));
       });
-
-      return () => unsubscribe(); // Limpa o "ouvinte"
+      return () => unsubscribe();
     }
-  }, [comentariosVisiveis, resenha.id]); // Roda sempre que a visibilidade dos comentários mudar
+  }, [comentariosVisiveis, resenha.id]);
 
   const formatTimestamp = (timestamp) => {
     if (!timestamp) return 'Agora mesmo';
-    return new Date(timestamp.seconds * 1000).toLocaleString('pt-BR', { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+    return new Date(timestamp.seconds * 1000).toLocaleString('pt-BR', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' });
   };
 
   return (
@@ -140,7 +125,6 @@ const ResenhaCard = ({ resenha }) => {
           💬 {comentariosVisiveis ? 'Fechar Comentários' : 'Comentar / Ver Comentários'}
         </button>
       </div>
-
       {comentariosVisiveis && (
         <div className="comments-section">
           {comentarios.map(comentario => (
@@ -151,18 +135,30 @@ const ResenhaCard = ({ resenha }) => {
               </div>
             </div>
           ))}
-          <NewCommentForm resenhaId={resenha.id} />
+          {/* O formulário de comentário só aparece se o usuário estiver logado */}
+          {user ? <NewCommentForm resenhaId={resenha.id} user={user} /> : <p className='mt-4 text-gray-400'>Faça o login para comentar.</p>}
         </div>
       )}
     </div>
   );
 };
 
+// --- COMPONENTE "FAÇA O LOGIN" ---
+const LoginPrompt = () => (
+  <div className="new-post-form text-center">
+    <h2 className="text-2xl font-ruach mb-4">Participe da Conversa</h2>
+    <p className="text-gray-400 mb-6">Você precisa estar logado para iniciar uma nova resenha na Mesa de Bar.</p>
+    <Link href="/login" className="form-button">
+      Fazer Login
+    </Link>
+  </div>
+);
 
 // --- COMPONENTE PRINCIPAL DA PÁGINA ---
 export default function MesaDeBarPage() {
   const [resenhas, setResenhas] = useState([]);
   const [loading, setLoading] = useState(true);
+  const { user } = UserAuth(); // <<< Pegamos o usuário logado aqui!
 
   useEffect(() => {
     const q = query(collection(db, 'resenhas'), orderBy('createdAt', 'desc'));
@@ -177,11 +173,14 @@ export default function MesaDeBarPage() {
     <main className="mesa-de-bar-container">
       <h1 className="mesa-de-bar-title">Mesa de Bar</h1>
       <p className="mesa-de-bar-subtitle">Onde as resenhas ganham vida. Puxe um assunto ou entre na conversa.</p>
-      <NewPostForm />
+      
+      {/* Mostra o formulário de postagem OU o convite para login */}
+      {user ? <NewPostForm user={user} /> : <LoginPrompt />}
+
       <div className="resenha-feed">
         {loading && <p className="text-center text-gray-400">Carregando a resenha da mesa...</p>}
         {!loading && resenhas.map(resenha => (
-          <ResenhaCard key={resenha.id} resenha={resenha} />
+          <ResenhaCard key={resenha.id} resenha={resenha} user={user} />
         ))}
       </div>
     </main>
