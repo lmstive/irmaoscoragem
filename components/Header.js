@@ -32,7 +32,7 @@ export default function Header() {
           <Link href="/integrantes" className={styles.navLink}>Integrantes</Link>
           <Link href="/galeria" className={styles.navLink}>Galeria</Link>
           <Link href="/onde-andam" className={styles.navLink}>Por Onde Andam</Link>
-          <Link href="/cantinho-da-resenha" className={styles.navLink}>Resenha</Link>
+          <Link href="/mesa-de-bar" className={styles.navLink}>Mesa de Bar</Link>
         </nav>
       </div>
     </header>

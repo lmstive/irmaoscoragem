@@ -18,4 +18,20 @@ export const integrantes = [
     fotoUrl: '/images/integrantes/ever.jpg',
     aniversario: '1979-09-26', // Aniversário em Julho (não aparecerá agora)
   },
+  {
+    nome: 'Adriano "Banana"',
+    fotoUrl: '/images/integrantes/adriano.jpg',
+    aniversario: '1976-05-06', // Aniversário em Junho
+  },
+  {
+    nome: 'Wilian "WC"',
+    fotoUrl: '/images/integrantes/wilians.jpg',
+    aniversario: '1978-11-18', // Aniversário em Junho
+  },
+  {
+    nome: 'Cabelo "Cabelo"',
+    fotoUrl: '/images/integrantes/cabelo.jpg',
+    aniversario: '1977-05-19', // Aniversário em Junho
+  },
+ 
 ];

@@ -49,9 +49,9 @@ const members = [
   },
   {
     id: 8,
-    name: "Willians",
+    name: "Wilians",
     titleOrQuote: "WC",
-    imageUrl: "/images/integrantes/willians.jpg", // Caminho correto para a imagem
+    imageUrl: "/images/integrantes/wilians.jpg", // Caminho correto para a imagem
   },
   {
     id: 9,
